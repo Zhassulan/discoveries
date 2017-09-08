@@ -50,6 +50,7 @@ public class App
             discoverer = discovererMapper.getDiscovererById(1);
             
             logger.info("Firstname " + discoverer.getFirstname());
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
