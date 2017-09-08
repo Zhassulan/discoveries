@@ -1,0 +1,10 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kz.ztokbayev.greetgo.discoveries.DiscovererMapper">
+    <select id="getDiscovererById" parameterType="java.lang.Integer" resultType="kz.ztokbayev.greetgo.discoveries.Discoverer">
+        select id, firstname, lastname, middlename from discoverers where id = #{id}  
+    </select>
+    
+    <select id="getDiscoverers" resultType="kz.ztokbayev.greetgo.discoveries.Discoverer">
+        select id, firstname, lastname, middlename from discoverers
+    </select>
+</mapper>
