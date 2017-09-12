@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Stars Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    
+    <script src="js/postrequest.js"></script>
+    <script src="js/getrequest.js"></script>
+</head>
+<body>
+<!-- 
+    <p>Get your greeting <a href="/greeting">here</a></p>
+    
+    <button type="button" class="btn btn-success">Кнопка</button>
+     -->
+    <div class="container">
+	<h1>POST-GET AJAX</h1>      
+    <div id="postdiv">
+        <form id="customerForm">
+            <label>FirstName</label>
+            <input type="text" id="firstname" class="form-control"/>
+            <label>LastName</label>
+            <input type="text" id="lastname" class="form-control"/>
+            <button type="submit" id="postBtn" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br/>
+    <div id="getdiv">
+        <button id="getBtn" >Get All Customers</button>
+    </div>
+    <div id="getResultDiv">
+    	<ul class="list-group">
+    	</ul>
+    </div>
+     
+</div>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
