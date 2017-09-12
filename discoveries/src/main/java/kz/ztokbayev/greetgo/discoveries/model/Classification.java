@@ -1,4 +1,4 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.model;
 
 public enum Classification {
 	id1("голубая"), id2("бело-голубая"), id3("белая"), id4("жёлто-белая"), 

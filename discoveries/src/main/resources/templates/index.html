@@ -16,33 +16,58 @@
     <script src="js/getrequest.js"></script>
 </head>
 <body>
+
+<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<h2>Список звёзд</h2>  
+				</div>
+			</div>
+		</div><!--/header_top-->
+	</header>
 <!-- 
     <p>Get your greeting <a href="/greeting">here</a></p>
     
     <button type="button" class="btn btn-success">Кнопка</button>
      -->
     <div class="container">
-	<h1>POST-GET AJAX</h1>      
-    <div id="postdiv">
-        <form id="customerForm">
-            <label>FirstName</label>
-            <input type="text" id="firstname" class="form-control"/>
-            <label>LastName</label>
-            <input type="text" id="lastname" class="form-control"/>
-            <button type="submit" id="postBtn" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-    <div id="postResultDiv">
-    </div>
-    <br/>
-    <div id="getdiv">
-        <button id="getBtn" >Get All Customers</button>
-    </div>
-    <div id="getResultDiv">
-    	<ul class="list-group">
-    	</ul>
-    </div>
-     
+    
+    <div class="row">
+    	<div class="col-md-6">
+
+			<div id="getAllStarsDiv">
+	  			<select multiple class="form-control">
+		    	</select>
+		    </div>
+			    
+		    <div id="postdiv">
+		        <form id="customerForm">
+		            <label>FirstName</label>
+		            <input type="text" id="firstname" class="form-control"/>
+		            <label>LastName</label>
+		            <input type="text" id="lastname" class="form-control"/>
+		            <button type="submit" id="postBtn" class="btn btn-primary">Submit</button>
+		        </form>
+		    </div>
+
+		    <div id="postResultDiv">
+		    </div>
+		    <br/>
+		    <div id="getdiv">
+		        <button id="getBtn" >Get All Discoverers</button>
+		    </div>
+		    <div id="getResultDiv">
+		    	<ul class="list-group">
+		    	</ul>
+		    </div>
+	   </div>   
+	   <div class="col-md-6">
+	    	<button type="button" id="addBtn" class="btn btn-success">Добавить</button>
+	    	<button type="button" id="changeBtn" class="btn btn-success">Изменить</button>
+	    	<button type="button" id="delBtn" class="btn btn-success">Удалить</button>
+	   </div>
+    </div>   
 </div>
 
     <script src="js/bootstrap.min.js"></script>

@@ -1,4 +1,4 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.web;
 
 public class Response {
 	private String status;

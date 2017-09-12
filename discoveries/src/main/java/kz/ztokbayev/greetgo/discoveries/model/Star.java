@@ -1,20 +1,28 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.model;
 
 public class Star {
 	
+	private Integer id;
 	private String title;
 	private String classification;
 	private int x;
 	private int y;
-	private Discoverer discoverer;
 	
-	public Star(String title, String classification, int x, int y, Discoverer discoverer) {
+	public Star(Integer id, String title, String classification, int x, int y) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.classification = classification;
 		this.x = x;
 		this.y = y;
-		this.discoverer = discoverer;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getTitle() {
@@ -40,14 +48,5 @@ public class Star {
 	}
 	public void setY(int y) {
 		this.y = y;
-	}
-	public Discoverer getDiscoverer() {
-		return discoverer;
-	}
-	public void setDiscoverer(Discoverer discoverer) {
-		this.discoverer = discoverer;
-	}
-	
-		
-	
+	}	
 }

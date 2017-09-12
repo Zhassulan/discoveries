@@ -1,4 +1,4 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

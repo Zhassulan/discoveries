@@ -1,7 +1,8 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.db;
 
 import java.util.List;
-import kz.ztokbayev.greetgo.discoveries.Discoverer;
+
+import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 
 public interface DiscovererMapper {
 	

@@ -1,4 +1,4 @@
-package kz.ztokbayev.greetgo.discoveries;
+package kz.ztokbayev.greetgo.discoveries.model;
 
 public class Discoverer {
 	
