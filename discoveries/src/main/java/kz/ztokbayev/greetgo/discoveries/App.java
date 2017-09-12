@@ -2,24 +2,24 @@ package kz.ztokbayev.greetgo.discoveries;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.Reader;
-import java.io.File;
-import java.net.URL;
 import java.util.List;
 
+@SpringBootApplication
 public class App 
 {
 	final static Logger logger = Logger.getLogger(App.class);
 	 
     public static void main( String[] args )
     {
-    	//PropertyConfigurator.configure("log4j.properties");
-    	    	
 		/*for (Classification cName : Classification.values()) {
 			System.out.println(cName + ") " + cName.getValue());
 		}*/
@@ -32,11 +32,11 @@ public class App
         SqlSession session = null;
         
         try {
-            reader = Resources.getResourceAsReader("mybatis-config.xml");
+            reader = Resources.getResourceAsReader("static/xml/mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
            
             session = sqlSessionFactory.openSession();
-            discovererMapper = session.getMapper(DiscovererMapper.class); //Создаем маппер, из которого и будем вызывать методы getSubscriberById и getSubscribers
+            discovererMapper = session.getMapper(DiscovererMapper.class);
             List <Discoverer> discoverers = discovererMapper.getDiscoverers();
             //System.out.println("Firstname " + discoverers.get(0).getFirstname());
             Discoverer discoverer = discovererMapper.getDiscovererById(1);
@@ -50,6 +50,8 @@ public class App
             discoverer = discovererMapper.getDiscovererById(1);
             
             logger.info("Firstname " + discoverer.getFirstname());
+            
+            SpringApplication.run(App.class, args);
             
         } catch (IOException e) {
             e.printStackTrace();

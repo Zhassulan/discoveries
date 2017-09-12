@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 <configuration> 
-    <properties resource="config.properties"> <!--ссылка на файл со свойствами(ссылка на СУБД, логин, пароль и тп.)-->
+    <properties resource="static/file/config.properties"> <!--ссылка на файл со свойствами(ссылка на СУБД, логин, пароль и тп.)-->
     </properties> 
     <settings><!--в данном блоке можно настроить много параметров. Полный список параметров http://mybatis.github.io/mybatis-3/configuration.html#settings-->
         <setting name="logImpl" value="LOG4J"/> 
@@ -18,6 +18,6 @@
         </environment> 
     </environments> 
     <mappers>
-    	<mapper resource="discoverermapper.xml"/>
+    	<mapper resource="static/xml/discoverermapper.xml"/>
     </mappers> 
 </configuration>
