@@ -1,0 +1,33 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kz.ztokbayev.greetgo.discoveries.db.StarMapper">
+
+    <insert id="addStar" parameterType="kz.ztokbayev.greetgo.discoveries.model.Star"
+    		flushCache="true" statementType="PREPARED" timeout="20">
+        insert into stars (title, classification, x, y, id_discoverer) 
+        	values(#{title}, #{classification}, #{x}, #{y}, #{id_discoverer}) 
+    </insert>
+    
+    <insert id="delStarById" parameterType="java.lang.Integer" flushCache="true" statementType="PREPARED" timeout="20">
+        delete from stars where id = #{id}
+    </insert>
+    
+    <select id="getStars" resultType="kz.ztokbayev.greetgo.discoveries.model.Star">
+        select s.* from stars s 
+        	join discoverers d on s.id_discoverer = d.id
+    </select>
+    
+    <select id="getStarById" parameterType="java.lang.Integer" resultType="kz.ztokbayev.greetgo.discoveries.model.Star">
+        select * from stars where id = #{id}  
+    </select>
+    
+    <update id="updateStar" parameterType="kz.ztokbayev.greetgo.discoveries.model.Star"
+    		flushCache="true" statementType="PREPARED" timeout="20">
+        update stars set
+        	title = #{title},
+        	classification = #{classification},
+        	x = #{x},
+        	y = #{y},
+        	id_discoverer = #{id_discoverer} 
+        where id = #{id}
+    </update>
+</mapper>
