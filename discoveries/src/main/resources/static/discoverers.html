@@ -82,11 +82,44 @@
 	   	
 	   	<p></p>
 	    <div class="row">
-	   		<button type="button" id="changeBtn" class="btn btn-success">Изменить</button>
+	   		<button type="button" id="changeBtn" class="btn btn-success"
+	   			data-toggle="modal" data-target="#FrmModalNewDiscoverer">Изменить</button>
 	   	</div>
+	   	
+	   	<div id="FrmModalEditDiscoverer" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Изменить открывателя</h4>
+		      </div>
+		      <div class="modal-body">
+			     <div id="PostDivEditDiscoverer">
+			        <form id="FrmEditDiscoverer" method="POST">
+			            <label>Имя</label>
+			            <input type="text" id="firstname" class="form-control"/>
+			            <label>Фамилия</label>
+			            <input type="text" id="lastname" class="form-control"/>
+			            <label>Отчество</label>
+			            <input type="text" id="middlename" class="form-control"/>
+		        	</form>
+		        </div>
+	         </div>
+		      <div class="modal-footer">
+		      	<button type="submit" id="BtnSaveNewDiscoverer" class="btn btn-success" data-dismiss="modal">Добавить</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+		
 	   	<p></p>
 	   	<div class="row">
-	   		<button type="button" id="delBtn" class="btn btn-success">Удалить</button>
+	   		<button type="button" id="BtnDelDiscoverer" class="btn btn-success">Удалить</button>
+		  </div>
+		</div>
+	   		
 	   	</div>
 	</div>
    

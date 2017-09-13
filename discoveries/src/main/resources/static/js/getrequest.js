@@ -2,12 +2,12 @@
 function FillList(listname, list)	{
 $.each(list.data, function(i, discoverer)	{
 	var txt = '';
-	var i = 0;
+	var b = false;
 	for (var key in discoverer)	{
 	    var val = discoverer[key];
-	    if (i > 0)
+	    if (b == true)
 	    	txt += ' ' + val;
-	    i++;
+	    if (b == false) b = true;
 	    }
 	val = val.trim();
 	var added = document.createElement('option');
@@ -18,45 +18,22 @@ $.each(list.data, function(i, discoverer)	{
 	});
 }
 
-$( document ).ready(function() {
-	
-	var url = window.location;
-	
-	//fill discoverers list when discoverers page loaded 
+function default_get()	{
+$("#DiscoverersList").empty();
+var url = window.location;
 	$.ajax({
 		  url: '/discoverers.html',
 		  success: function()	{
-			  //alert('s');
 			  $.get(url + "/getdiscoverers", function(data)	{
 				  FillList("#DiscoverersList", data);
 			  });
 		  }
-		});
+		});	
+}
+
+$( document ).ready(function() {
+	var url = window.location;
+	//fill discoverers list when discoverers page loaded 
+	default_get();
 	
-	// GET REQUEST
-	$("#getBtn").click(function(event){
-		event.preventDefault();
-		ajaxGet();
-	});
-
-	// DO GET
-	function ajaxGet(){
-
-		/*
-		 $.ajax({
-			type : "GET",
-			url : url + "/getdiscoverers",
-			success: function(result){
-				if	(result.status == "Done")	{
-					$.each(result.data, function(i, discoverer)
-						{
-						$('#getDiscoverersDiv.DiscoverersList').append('<option value="' + discoverer.id + '">' + discoverer.lastname + ' ' +  discoverer.firstname + ' ' + discoverer.middlename + '</option>')
-						});
-				}
-			},
-			error : function(e) {
-				$("#getDiscoverersDiv").html("<strong>Error loading all discoverers</strong>");
-			}
-		});*/	
-	}
 })

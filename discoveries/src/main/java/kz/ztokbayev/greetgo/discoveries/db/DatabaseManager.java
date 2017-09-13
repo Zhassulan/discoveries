@@ -44,4 +44,13 @@ public class DatabaseManager {
 		}
 	}
 	
+	public void delDiscovererById(Integer id)	{
+		try(SqlSession session = sqlSessionFactory.openSession()) {
+			discovererMapper = session.getMapper(DiscovererMapper.class);
+			discovererMapper.delDiscovererById(id);
+			session.commit();
+		}
+	}
+	
+	
 }

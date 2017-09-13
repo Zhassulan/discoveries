@@ -6,6 +6,7 @@ import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -29,7 +30,7 @@ public class RestWebController {
 
 	@RequestMapping(value = "discoverers.html/postdiscoverer", method = RequestMethod.POST,
 			consumes="application/json", headers = {"content-type=text/plain"})
-	public String postDiscoverer(@RequestBody String jsonString) {
+	public Response postDiscoverer(@RequestBody String jsonString) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			Discoverer discoverer = objectMapper.readValue(jsonString, Discoverer.class);
@@ -39,6 +40,14 @@ public class RestWebController {
 		{
 			System.err.println("Caught IOException: " + e.getMessage());
 		}
-		return jsonString;
+	Response response = new Response("Done", null);
+	return response;
+	}
+	
+	@RequestMapping(value = "discoverers.html/deldiscoverer", method = RequestMethod.POST)
+	public Response delDiscoverer(@RequestParam(value="id") Integer id) {
+		App.dbmanager.delDiscovererById(id);
+		Response response = new Response("Done", null);
+		return response;
 	}
 }

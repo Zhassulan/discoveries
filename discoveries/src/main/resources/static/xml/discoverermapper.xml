@@ -8,6 +8,11 @@
         	values(#{firstname}, #{lastname}, #{middlename}) 
     </insert>
     
+    <!-- Удалить открывателя -->	    
+    <insert id="delDiscovererById" parameterType="java.lang.Integer" flushCache="true" statementType="PREPARED" timeout="20">
+        delete from discoverers where id = #{id}
+    </insert>
+    
 	<!-- Получить всех открывателей -->	    
     <select id="getDiscoverers" resultType="kz.ztokbayev.greetgo.discoveries.model.Discoverer">
         select * from discoverers
