@@ -60,4 +60,12 @@ public class DatabaseManager {
 		}
 		return discoverer;
 	}
+	
+	public void updateDiscoverer(Discoverer discoverer)	{
+		try(SqlSession session = sqlSessionFactory.openSession()) {
+			discovererMapper = session.getMapper(DiscovererMapper.class);
+			discovererMapper.updateDiscoverer(discoverer);
+			session.commit();
+		}
+	}
 }

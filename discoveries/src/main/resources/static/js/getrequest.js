@@ -46,14 +46,17 @@ $( document ).ready(function() {
 	            success: function (data) {
 	            	var str = JSON.stringify(data);
 	            	var obj = JSON.parse(str);
-	            	
-	            	for (var key in obj)	{
-	            	    var val = obj[key];
-	            	    alert(val);
-	            	    }
-	            	
-	            	$('#id1').val(obj.id);
-	            	$('#firstname1').val(obj.firstname);
+	            	  for(k in obj)
+	                  	{
+	            		if (k == 'data')
+	            			{
+	            			//alert(obj[k].firstname);
+	            			$('#id1').val(obj[k].id);
+	            			$('#firstname1').val(obj[k].firstname);
+	            			$('#lastname1').val(obj[k].lastname);
+	            			$('#middlename1').val(obj[k].middlename);
+	            			}
+	                  	} 
 	            	$('#FrmModalEditDiscoverer').modal('show');
 	            }
 	        });

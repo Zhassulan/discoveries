@@ -56,4 +56,20 @@ public class RestWebController {
 		Response response = new Response("Done", discoverer);
 		return response;
 	}
+	
+	@RequestMapping(value = "discoverers.html/updatediscoverer", method = RequestMethod.POST,
+			consumes="application/json", headers = {"content-type=text/plain"})
+	public Response updateDiscoverer(@RequestBody String jsonString) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			Discoverer discoverer = objectMapper.readValue(jsonString, Discoverer.class);
+			App.dbmanager.updateDiscoverer(discoverer);
+		}
+		catch (Exception e)
+		{
+			System.err.println("Caught IOException: " + e.getMessage());
+		}
+	Response response = new Response("Done", null);
+	return response;
+	}
 }
