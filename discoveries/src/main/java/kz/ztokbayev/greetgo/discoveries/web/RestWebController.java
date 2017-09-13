@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import kz.ztokbayev.greetgo.discoveries.App;
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 
@@ -15,18 +13,17 @@ import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 public class RestWebController {
 	List<Discoverer> discoverers = null; 
 	
-	@RequestMapping(value = "/getalldiscoverers", method = RequestMethod.GET)
-	public Response getResource() {
+	@RequestMapping(value = "discoverers.html/getdiscoverers", method = RequestMethod.GET)
+	public Response getDiscoverers() {
 		discoverers = App.dbmanager.GetAllDiscoverers();
 		Response response = new Response("Done", discoverers);
 		return response;
 	}
 
-	@RequestMapping(value = "/postdiscoverer", method = RequestMethod.POST)
-	public Response postCustomer(@RequestBody Discoverer discoverer) {
-		discoverers.add(discoverer);
-		// Create Response Object
-		Response response = new Response("Done", discoverer);
-		return response;
+	@RequestMapping(value = "discoverers.html/postdiscoverer", method = RequestMethod.POST,
+			consumes="application/json")
+	public String  postDiscoverer(@RequestBody String string) {
+		//App.dbmanager.addDiscoverer(discoverer);
+		return string;
 	}
 }

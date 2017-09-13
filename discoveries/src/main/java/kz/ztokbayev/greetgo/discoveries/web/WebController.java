@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WebController {
+	//home page index.html
 	 @RequestMapping(value="/",method = RequestMethod.GET)
-	    public String homepage(){
+   public String homepage()	{
 	        return "index";
 	    }
 }

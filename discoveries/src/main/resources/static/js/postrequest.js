@@ -1,24 +1,55 @@
+
+/*$("#FrmNewDiscoverer").submit(function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+          type: 'POST',
+          url:  url + '/postdiscoverer',
+          data: $('#FrmNewDiscoverer').serialize(),
+          success: function () {
+				  alert('sended');
+          }
+        });
+        
+});*/
+ 
 $( document ).ready(function() {
 	
 	var url = window.location;
 	
-	// SUBMIT FORM
-    $("#customerForm").submit(function(event) {
-		// Prevent the form from submitting via the browser.
-		event.preventDefault();
-		ajaxPost();
-	});
-    
+	$("#BtnSaveNewDiscoverer").click(function (event) {
+        event.preventDefault();
+        var form = $('#FrmNewDiscoverer')[0];
+        var data = new FormData(form);
+        //alert(data.firstname);
+        $.ajax({
+            type: "POST",
+            url: url + '/postdiscoverer',
+            processData: false,
+            contentType: false,
+            data: JSON.stringify($('#FrmNewDiscoverer')),
+            dataType : 'json',			
+            success: function (data) {
+                alert('SUCCESS', data);
+                resetData();
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+            }
+        });
+
+    });
+  
+    /*
     
     function ajaxPost(){
     	
-    	// PREPARE FORM DATA
     	var formData = {
     		firstname : $("#firstname").val(),
-    		lastname :  $("#lastname").val()
+    		lastname :  $("#lastname").val(),
+    		middlename :  $("#lastname").val()
     	}
     	
-    	// DO POST
     	$.ajax({
 			type : "POST",
 			contentType : "application/json",
@@ -27,10 +58,12 @@ $( document ).ready(function() {
 			dataType : 'json',
 			success : function(result) {
 				if(result.status == "Done"){
-					$("#postResultDiv").html("<strong>" + "Post Successfully! Discoverer's Info: FirstName = " 
-							+ result.data.firstname + " ,LastName = " + result.data.lastname + "</strong>");
+					alert(result.data.firstname);
+					//$("#postResultDiv").html("<strong>" + "Post Successfully! Discoverer's Info: FirstName = " 
+						//	+ result.data.firstname + " ,LastName = " + result.data.lastname + "</strong>");
 				}else{
-					$("#postResultDiv").html("<strong>Error</strong>");
+					alert('Error post');
+					//$("#postResultDiv").html("<strong>Error</strong>");
 				}
 				console.log(result);
 			},
@@ -44,9 +77,10 @@ $( document ).ready(function() {
     	resetData();
  
     }
-    
+    */
     function resetData(){
     	$("#firstname").val("");
     	$("#lastname").val("");
+    	$("#middlename").val("");
     }
 })
