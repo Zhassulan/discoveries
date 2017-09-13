@@ -2,11 +2,16 @@ package kz.ztokbayev.greetgo.discoveries.model;
 
 public class Discoverer {
 	
+	
 	private Integer id;
 	private String firstname;
 	private String lastname;
 	private String middlename;
 	
+	public Discoverer()	{
+		
+	}
+			
 	public Discoverer(Integer id, String firstname, String lastname, String middlename) {
 		super();
 		this.id = id;
@@ -14,7 +19,15 @@ public class Discoverer {
 		this.lastname = lastname;
 		this.middlename = middlename;
 	}
-
+	
+	public Discoverer(String firstname, String lastname, String middlename) {
+		super();
+		this.id = 0;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.middlename = middlename;
+	}
+	
 	public int getId() {
 		return id;
 	}

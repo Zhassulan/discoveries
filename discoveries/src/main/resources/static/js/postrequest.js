@@ -19,18 +19,26 @@ $( document ).ready(function() {
 	
 	$("#BtnSaveNewDiscoverer").click(function (event) {
         event.preventDefault();
-        var form = $('#FrmNewDiscoverer')[0];
-        var data = new FormData(form);
+        
+        //var form = $('#FrmNewDiscoverer')[0];
+        //var data = new FormData(form);
+        
+        var discoverer = {
+                firstname: $("#firstname").val(),
+                lastname:$("#lastname").val(),
+                middlename:$("#middlename").val()
+            }
+        
         //alert(data.firstname);
         $.ajax({
             type: "POST",
             url: url + '/postdiscoverer',
             processData: false,
             contentType: false,
-            data: JSON.stringify($('#FrmNewDiscoverer')),
-            dataType : 'json',			
+            data: JSON.stringify(discoverer),
+            dataType: 'json',
             success: function (data) {
-                alert('SUCCESS', data);
+                //alert('SUCCESS', data);
                 resetData();
             },
             error: function (e) {
