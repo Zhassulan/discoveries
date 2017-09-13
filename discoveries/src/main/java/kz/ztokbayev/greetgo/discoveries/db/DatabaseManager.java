@@ -52,5 +52,12 @@ public class DatabaseManager {
 		}
 	}
 	
-	
+	public Discoverer getDiscovererById(Integer id)	{
+		Discoverer discoverer;
+		try(SqlSession session = sqlSessionFactory.openSession()) {
+			discovererMapper = session.getMapper(DiscovererMapper.class);
+			discoverer = discovererMapper.getDiscovererById(id); 
+		}
+		return discoverer;
+	}
 }

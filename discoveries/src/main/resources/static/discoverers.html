@@ -72,7 +72,7 @@
 		        </div>
 	         </div>
 		      <div class="modal-footer">
-		      	<button type="submit" id="BtnSaveNewDiscoverer" class="btn btn-success" data-dismiss="modal">Добавить</button>
+		      	<button type="submit" id="BtnSaveNewDiscoverer" class="btn btn-success" data-dismiss="modal">Сохранить</button>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
 		      </div>
 		    </div>
@@ -82,8 +82,8 @@
 	   	
 	   	<p></p>
 	    <div class="row">
-	   		<button type="button" id="changeBtn" class="btn btn-success"
-	   			data-toggle="modal" data-target="#FrmModalNewDiscoverer">Изменить</button>
+	   		<button type="button" id="BtnEditDiscoverer" class="btn btn-success">Изменить</button>
+	   			<!-- data-toggle="modal" data-target="#FrmModalEditDiscoverer">Изменить</button>  -->
 	   	</div>
 	   	
 	   	<div id="FrmModalEditDiscoverer" class="modal fade" role="dialog">
@@ -95,18 +95,19 @@
 		      </div>
 		      <div class="modal-body">
 			     <div id="PostDivEditDiscoverer">
-			        <form id="FrmEditDiscoverer" method="POST">
+			        <form id="FrmEditDiscoverer" method="GET">
+			            <input type="hidden" id="id1" class="form-control"/>
 			            <label>Имя</label>
-			            <input type="text" id="firstname" class="form-control"/>
+			            <input type="text" id="firstname1" class="form-control"/>
 			            <label>Фамилия</label>
-			            <input type="text" id="lastname" class="form-control"/>
+			            <input type="text" id="lastname1" class="form-control"/>
 			            <label>Отчество</label>
-			            <input type="text" id="middlename" class="form-control"/>
+			            <input type="text" id="middlename1" class="form-control"/>
 		        	</form>
 		        </div>
 	         </div>
 		      <div class="modal-footer">
-		      	<button type="submit" id="BtnSaveNewDiscoverer" class="btn btn-success" data-dismiss="modal">Добавить</button>
+		      	<button type="submit" id="BtnSaveDiscoverer" class="btn btn-success" data-dismiss="modal">Обновить</button>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
 		      </div>
 		    </div>

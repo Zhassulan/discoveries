@@ -11,4 +11,5 @@ public interface DiscovererMapper {
 	void updateDiscoverer(Discoverer dsc);
 	void addDiscoverer(Discoverer dsc);
 	void delDiscovererById(Integer id);
+	
 }

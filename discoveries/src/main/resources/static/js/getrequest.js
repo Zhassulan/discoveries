@@ -33,7 +33,30 @@ var url = window.location;
 
 $( document ).ready(function() {
 	var url = window.location;
+
 	//fill discoverers list when discoverers page loaded 
 	default_get();
+	
+	$("#BtnEditDiscoverer").click(function (event) {
+			var id = $("#DiscoverersList option:selected").attr('value');
+			$.ajax({
+	            type: "GET",
+	            url: url + '/getdiscoverer',
+	            data: {"id" : id},
+	            success: function (data) {
+	            	var str = JSON.stringify(data);
+	            	var obj = JSON.parse(str);
+	            	
+	            	for (var key in obj)	{
+	            	    var val = obj[key];
+	            	    alert(val);
+	            	    }
+	            	
+	            	$('#id1').val(obj.id);
+	            	$('#firstname1').val(obj.firstname);
+	            	$('#FrmModalEditDiscoverer').modal('show');
+	            }
+	        });
+	    });
 	
 })

@@ -19,11 +19,10 @@ import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 
 @RestController
 public class RestWebController {
-	List<Discoverer> discoverers = null; 
-	
+		
 	@RequestMapping(value = "discoverers.html/getdiscoverers", method = RequestMethod.GET)
 	public Response getDiscoverers() {
-		discoverers = App.dbmanager.GetAllDiscoverers();
+		List<Discoverer> discoverers = App.dbmanager.GetAllDiscoverers();
 		Response response = new Response("Done", discoverers);
 		return response;
 	}
@@ -48,6 +47,13 @@ public class RestWebController {
 	public Response delDiscoverer(@RequestParam(value="id") Integer id) {
 		App.dbmanager.delDiscovererById(id);
 		Response response = new Response("Done", null);
+		return response;
+	}
+	
+	@RequestMapping(value = "discoverers.html/getdiscoverer", method = RequestMethod.GET)
+	public Response getDiscovererById(@RequestParam(value="id") Integer id) {
+		Discoverer discoverer = App.dbmanager.getDiscovererById(id);
+		Response response = new Response("Done", discoverer);
 		return response;
 	}
 }
