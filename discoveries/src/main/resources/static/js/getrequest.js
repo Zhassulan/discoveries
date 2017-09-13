@@ -12,7 +12,6 @@ $.each(list.data, function(i, discoverer)	{
 	var added = document.createElement('option');
 	var select = $(listname);
     added.value = discoverer.id;
-	//alert(txt);
     added.innerHTML = txt;
     select.append(added);
 	});
@@ -43,11 +42,12 @@ function default_get_stars()	{
 			  }
 			});	
 	}
-
+	
 $( document ).ready(function() {
+	
 	var url = window.location;
-
-	if (url == url + '/discoverers.html') default_get(); else default_get_stars();
+	var url_lastpart = location.href.substr(location.href.lastIndexOf('/') + 1);
+	if (url_lastpart == 'discoverers.html') default_get(); else default_get_stars();
 	
 	$("#BtnEditDiscoverer").click(function (event) {
 			var id = $("#DiscoverersList option:selected").attr('value');
