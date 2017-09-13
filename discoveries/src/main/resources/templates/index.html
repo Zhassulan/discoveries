@@ -26,68 +26,105 @@
 			</div>
 		</div><!--/header_top-->
 	</header>
-<!-- 
-    <p>Get your greeting <a href="/greeting">here</a></p>
-    
-    <button type="button" class="btn btn-success">Кнопка</button>
-     -->
-    <div class="container">
-    
-    <div class="row">
-    	
-    	
-    	<div class="row">
-    		<h3>Список звёзд</h3>
-    	</div>
-    	
-	<div class="col-md-6">
-			<!-- <div id="getAllStarsDiv">
-	  			<select multiple class="form-control">
-		    	</select>
-		    </div> -->
-			    
-		    <div id="postdiv">
-		        <form id="customerForm">
-		            <label>FirstName</label>
-		            <input type="text" id="firstname" class="form-control"/>
-		            <label>LastName</label>
-		            <input type="text" id="lastname" class="form-control"/>
-		            <button type="submit" id="postBtn" class="btn btn-primary">Submit</button>
-		        </form>
-		    </div>
 
-		    <div id="postResultDiv">
-		    </div>
-		    <br/>
-		    <div id="getdiv">
-		        <button id="getBtn" >Get All Discoverers</button>
-		    </div>
-		    <div id="getResultDiv">
-		    	<ul class="list-group">
-		    	</ul>
-		    </div>
-	   </div>   
-	   <div class="col-md-6">
-	   
-	   <div class="row">
-	   		
-	   	</div>
-	   	<div class="row">
-	   		<button type="button" id="addBtn" class="btn btn-success">Добавить</button>
-	   	</div>
-	   	<p></p>
-	    <div class="row">
-	   		<button type="button" id="changeBtn" class="btn btn-success">Изменить</button>
-	   	</div>
-	   	<p></p>
-	   	<div class="row">
-	   		<button type="button" id="delBtn" class="btn btn-success">Удалить</button>
-	   	</div>
-	    <p></p>    	
-	    	<a href="/discoverers.html">Справочник открывателей</a>
-	   </div>
-    </div>   
+<div class="row">
+	<div class="col-md-8 col-lg-8">
+		<hr style="background-color:#a1a1a1 !important; height:1px;"/>
+	</div>
+ </div>
+ 
+<div class="container">
+   
+<div class="row">
+   	
+<div class="col-md-6">
+		<select id="StarsList" multiple class="form-control" style="height:200px">
+		</select>
 </div>
+			    
+  <div class="col-md-6">
+  	<div class="row">
+  		<button type="button" id="BtnAddStar" class="btn btn-success"
+  			data-toggle="modal" data-target="#FrmModalNewStar">Добавить</button>
+  	</div>
+  	
+<div id="FrmModalNewStar" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавить звезду</h4>
+      </div>
+      <div class="modal-body">
+	     <div id="PostDivNewStar">
+	        <form id="FrmNewStar" method="POST">
+	            <label>Название</label>
+	            <input type="text" id="title" class="form-control"/>
+	            <label>Классификация</label>
+	            <input type="text" id="classification" class="form-control"/>
+	            <label>Координата X</label>
+	            <input type="text" id="x" class="form-control"/>
+	            <label>Координата Y</label>
+	            <input type="text" id="x" class="form-control"/>
+	           	<label>Открыватель</label>
+	           	
+        	</form>
+        </div>
+        </div>
+      <div class="modal-footer">
+      	<button type="submit" id="BtnSaveNewStar" class="btn btn-success" data-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  	
+  	<p></p>
+   <div class="row">
+  		<button type="button" id="BtnEditDiscoverer" class="btn btn-success">Изменить</button>
+  			<!-- data-toggle="modal" data-target="#FrmModalEditDiscoverer">Изменить</button>  -->
+  	</div>
+  	
+  	<div id="FrmModalEditDiscoverer" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Изменить открывателя</h4>
+      </div>
+      <div class="modal-body">
+	     <div id="PostDivEditDiscoverer">
+	        <form id="FrmEditDiscoverer" method="GET">
+	            <input type="hidden" id="id1" class="form-control"/>
+	            <label>Имя</label>
+	            <input type="text" id="firstname1" class="form-control"/>
+	            <label>Фамилия</label>
+	            <input type="text" id="lastname1" class="form-control"/>
+	            <label>Отчество</label>
+	            <input type="text" id="middlename1" class="form-control"/>
+        	</form>
+        </div>
+        </div>
+      <div class="modal-footer">
+      	<button type="submit" id="BtnSaveDiscoverer" class="btn btn-success" data-dismiss="modal">Обновить</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  	<p></p>
+  	<div class="row">
+  		<button type="button" id="BtnDelDiscoverer" class="btn btn-success">Удалить</button>
+  </div>
+
+   <p></p>    	
+   	<a href="/discoverers.html">Справочник открывателей</a>
+  </div>
+  	</div>
+  </div>   
 
     <script src="js/bootstrap.min.js"></script>
 </body>

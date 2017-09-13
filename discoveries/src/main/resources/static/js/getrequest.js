@@ -31,11 +31,23 @@ var url = window.location;
 		});	
 }
 
+function default_get_stars()	{
+	$("#StarsList").empty();
+	var url = window.location;
+		$.ajax({
+			  url: '/',
+			  success: function()	{
+				  $.get(url + "/getstars", function(data)	{
+					  FillList("#StarsList", data);
+				  });
+			  }
+			});	
+	}
+
 $( document ).ready(function() {
 	var url = window.location;
 
-	//fill discoverers list when discoverers page loaded 
-	default_get();
+	if (url == url + '/discoverers.html') default_get(); else default_get_stars();
 	
 	$("#BtnEditDiscoverer").click(function (event) {
 			var id = $("#DiscoverersList option:selected").attr('value');

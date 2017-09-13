@@ -7,14 +7,20 @@ public class Star {
 	private String classification;
 	private int x;
 	private int y;
+	private Integer id_discoverer;
 	
-	public Star(Integer id, String title, String classification, int x, int y) {
+	public Star()	{
+		
+	}
+	
+	public Star(Integer id, String title, String classification, Integer x, Integer y, Integer id_discoverer) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.classification = classification;
 		this.x = x;
 		this.y = y;
+		this.id_discoverer = id_discoverer;
 	}
 	
 	public int getId() {
@@ -48,5 +54,15 @@ public class Star {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public Integer getId_discoverer() {
+		return id_discoverer;
+	}
+
+	public void setId_discoverer(Integer id_discoverer) {
+		this.id_discoverer = id_discoverer;
 	}	
+	
+	
 }

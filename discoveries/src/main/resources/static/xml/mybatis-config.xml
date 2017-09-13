@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 <configuration> 
-    <properties resource="static/file/config.properties"> <!--ссылка на файл со свойствами(ссылка на СУБД, логин, пароль и тп.)-->
+    <properties resource="static/file/config.properties"> 
     </properties> 
-    <settings><!--в данном блоке можно настроить много параметров. Полный список параметров http://mybatis.github.io/mybatis-3/configuration.html#settings-->
+    <settings>
         <setting name="logImpl" value="LOG4J"/> 
     </settings> 
-    <environments default="development"><!--в данном блоке настраиваются подключения к БД-->
+    <environments default="development">
         <environment id="development"> 
             <transactionManager type="JDBC"/> 
             <dataSource type="POOLED"> 
@@ -19,5 +19,6 @@
     </environments> 
     <mappers>
     	<mapper resource="static/xml/discoverermapper.xml"/>
+    	<mapper resource="static/xml/starmapper.xml"/>
     </mappers> 
 </configuration>

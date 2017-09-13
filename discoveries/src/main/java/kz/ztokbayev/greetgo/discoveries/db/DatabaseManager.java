@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
+import kz.ztokbayev.greetgo.discoveries.model.Star;
 
 import java.io.Reader;
 import java.util.List;
@@ -14,6 +15,7 @@ public class DatabaseManager {
 	
 	private static SqlSessionFactory sqlSessionFactory;
 	private static DiscovererMapper discovererMapper;
+	private static StarMapper starMapper;
 	private static Reader reader = null;
     
 	static {
@@ -67,5 +69,14 @@ public class DatabaseManager {
 			discovererMapper.updateDiscoverer(discoverer);
 			session.commit();
 		}
+	}
+	
+	public List <Star> GetStars()	{
+		List <Star> stars;
+		try(SqlSession session = sqlSessionFactory.openSession()) {
+			starMapper = session.getMapper(StarMapper.class);
+			stars = starMapper.getStars();
+		}
+       return stars;
 	}
 }

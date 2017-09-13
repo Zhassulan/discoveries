@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import kz.ztokbayev.greetgo.discoveries.App;
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
+import kz.ztokbayev.greetgo.discoveries.model.Star;
 
 @RestController
 public class RestWebController {
@@ -71,5 +72,12 @@ public class RestWebController {
 		}
 	Response response = new Response("Done", null);
 	return response;
+	}
+	
+	@RequestMapping(value = "/getstars", method = RequestMethod.GET)
+	public Response getStars() {
+		List<Star> stars = App.dbmanager.GetStars();
+		Response response = new Response("Done", stars);
+		return response;
 	}
 }
