@@ -9,10 +9,10 @@ $.each(list.data, function(i, discoverer)	{
 	    	txt += ' ' + val;
 	    if (b == false) b = true;
 	    }
-	val = val.trim();
 	var added = document.createElement('option');
 	var select = $(listname);
     added.value = discoverer.id;
+	//alert(txt);
     added.innerHTML = txt;
     select.append(added);
 	});
@@ -62,7 +62,6 @@ $( document ).ready(function() {
 	                  	{
 	            		if (k == 'data')
 	            			{
-	            			//alert(obj[k].firstname);
 	            			$('#id1').val(obj[k].id);
 	            			$('#firstname1').val(obj[k].firstname);
 	            			$('#lastname1').val(obj[k].lastname);

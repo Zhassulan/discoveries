@@ -12,7 +12,7 @@
     </insert>
     
     <select id="getStars" resultType="kz.ztokbayev.greetgo.discoveries.model.Star">
-        select s.* from stars s 
+        select s.*, d. from stars s 
         	join discoverers d on s.id_discoverer = d.id
     </select>
     
