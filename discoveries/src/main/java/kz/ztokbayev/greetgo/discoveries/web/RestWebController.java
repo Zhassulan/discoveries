@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
+import kz.ztokbayev.greetgo.discoveries.App;
 import kz.ztokbayev.greetgo.discoveries.db.DatabaseManager;
 import kz.ztokbayev.greetgo.discoveries.model.Star;
 
@@ -34,10 +35,11 @@ public class RestWebController {
 			Discoverer discoverer = objectMapper.readValue(jsonString, Discoverer.class);
 			dbmanager.addDiscoverer(discoverer);
 		}
-		catch (Exception e)
-		{
-			System.err.println("Caught IOException: " + e.getMessage());
-		}
+		catch (Exception ex)
+			{
+				App.logger.info("Error message: " + ex.getMessage());
+				App.logger.error("Stack trace: ", ex);
+			}
 	Response response = new Response("Done", null);
 	return response;
 	}
@@ -64,9 +66,10 @@ public class RestWebController {
 			Discoverer discoverer = objectMapper.readValue(jsonString, Discoverer.class);
 			dbmanager.updateDiscoverer(discoverer);
 		}
-		catch (Exception e)
+		catch (Exception ex)
 		{
-			System.err.println("Caught IOException: " + e.getMessage());
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
 		}
 	Response response = new Response("Done", null);
 	return response;

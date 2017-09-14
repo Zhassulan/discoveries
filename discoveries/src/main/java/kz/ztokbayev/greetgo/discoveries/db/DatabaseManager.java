@@ -25,9 +25,10 @@ public class DatabaseManager {
 			reader = Resources.getResourceAsReader("static/xml/mybatis-config.xml");
 	        sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		}
-		catch	(Exception e)
+		catch	(Exception ex)
 		{
-		e.printStackTrace();	
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
 		}
 	}
 	
@@ -46,17 +47,23 @@ public class DatabaseManager {
 			reader.close();
 			App.logger.info("Database is initialized.");
 			}
-			catch	(Exception e)
+			catch	(Exception ex)
 			{
-			e.printStackTrace();	
+				App.logger.info("Error message: " + ex.getMessage());
+				App.logger.error("Stack trace: ", ex);
 			}
 	}
 	
 	public List <Discoverer> GetAllDiscoverers()	{
-		List <Discoverer> discoverers;
+		List <Discoverer> discoverers = null;
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
 	        discoverers = discovererMapper.getDiscoverers();
+		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
 		}
        return discoverers;
 	}
@@ -67,6 +74,11 @@ public class DatabaseManager {
 			discovererMapper.addDiscoverer(discoverer);
 			session.commit();
 		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
+		}
 	}
 	
 	public void delDiscovererById(Integer id)	{
@@ -75,13 +87,23 @@ public class DatabaseManager {
 			discovererMapper.delDiscovererById(id);
 			session.commit();
 		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
+		}
 	}
 	
 	public Discoverer getDiscovererById(Integer id)	{
-		Discoverer discoverer;
+		Discoverer discoverer = null;
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
 			discoverer = discovererMapper.getDiscovererById(id); 
+		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
 		}
 		return discoverer;
 	}
@@ -92,13 +114,23 @@ public class DatabaseManager {
 			discovererMapper.updateDiscoverer(discoverer);
 			session.commit();
 		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
+		}
 	}
 	
 	public List <Star> GetStars()	{
-		List <Star> stars;
+		List <Star> stars = null;
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			starMapper = session.getMapper(StarMapper.class);
 			stars = starMapper.getStars();
+		}
+		catch	(Exception ex)
+		{
+			App.logger.info("Error message: " + ex.getMessage());
+			App.logger.error("Stack trace: ", ex);
 		}
        return stars;
 	}
