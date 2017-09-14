@@ -9,5 +9,4 @@ public interface StarMapper {
 	void updateStar(Star star);
 	void addStar(Star star);
 	void delDStarById(Integer id);
-	//ss
 }
