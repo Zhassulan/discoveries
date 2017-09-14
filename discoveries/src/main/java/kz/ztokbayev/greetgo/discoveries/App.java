@@ -9,7 +9,7 @@ import kz.ztokbayev.greetgo.discoveries.db.DatabaseManager;
 @SpringBootApplication
 public class App 
 {
-	final static Logger logger = Logger.getLogger(App.class);
+	public static Logger logger = Logger.getLogger(App.class);
 	public static DatabaseManager dbmanager = new DatabaseManager();
 	
 	

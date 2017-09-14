@@ -12,8 +12,7 @@
     </insert>
     
     <select id="getStars" resultType="kz.ztokbayev.greetgo.discoveries.model.Star">
-        select s.id, s.title, s.classification, s.x, s.y, concat(d.lastname,' ',d.firstname,' ',d.middlename) from stars s 
-        	join discoverers d on s.id_discoverer = d.id
+        select * from stars s 
     </select>
     
     <select id="getStarById" parameterType="java.lang.Integer" resultType="kz.ztokbayev.greetgo.discoveries.model.Star">

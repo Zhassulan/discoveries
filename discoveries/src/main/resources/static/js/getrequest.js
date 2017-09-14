@@ -17,6 +17,7 @@ $.each(list.data, function(i, discoverer)	{
 	});
 }
 
+//Fill discoverers list on discoverers page
 function default_get()	{
 $("#DiscoverersList").empty();
 var url = window.location;
@@ -30,6 +31,7 @@ var url = window.location;
 		});	
 }
 
+//Fill stars list on stars page
 function default_get_stars()	{
 	$("#StarsList").empty();
 	var url = window.location;
@@ -42,13 +44,17 @@ function default_get_stars()	{
 			  }
 			});	
 	}
-	
+
+//Override ready
 $( document ).ready(function() {
 	
 	var url = window.location;
+	//last part of url
 	var url_lastpart = location.href.substr(location.href.lastIndexOf('/') + 1);
+	//fill list of discoverers or stars, dependently to current page
 	if (url_lastpart == 'discoverers.html') default_get(); else default_get_stars();
 	
+	//Fill and load edit discoverer form
 	$("#BtnEditDiscoverer").click(function (event) {
 			var id = $("#DiscoverersList option:selected").attr('value');
 			$.ajax({

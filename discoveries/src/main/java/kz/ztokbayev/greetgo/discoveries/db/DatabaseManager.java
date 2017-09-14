@@ -1,10 +1,12 @@
 package kz.ztokbayev.greetgo.discoveries.db;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kz.ztokbayev.greetgo.discoveries.App;
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 import kz.ztokbayev.greetgo.discoveries.model.Star;
 
@@ -17,7 +19,7 @@ public class DatabaseManager {
 	private static DiscovererMapper discovererMapper;
 	private static StarMapper starMapper;
 	private static Reader reader = null;
-    
+	
 	static {
 		try {
 			reader = Resources.getResourceAsReader("static/xml/mybatis-config.xml");
@@ -27,6 +29,27 @@ public class DatabaseManager {
 		{
 		e.printStackTrace();	
 		}
+	}
+	
+	public DatabaseManager()	{
+		Initialize();
+	}
+	
+	public void Initialize()	{
+		try(SqlSession session = sqlSessionFactory.openSession()) {
+			reader = Resources.getResourceAsReader("static/sql/schema.sql");
+			ScriptRunner runner = new ScriptRunner(session.getConnection());
+			runner.setLogWriter(null);
+			runner.setErrorLogWriter(null);
+			runner.runScript(reader);
+			session.commit();
+			reader.close();
+			App.logger.info("Database is initialized.");
+			}
+			catch	(Exception e)
+			{
+			e.printStackTrace();	
+			}
 	}
 	
 	public List <Discoverer> GetAllDiscoverers()	{
