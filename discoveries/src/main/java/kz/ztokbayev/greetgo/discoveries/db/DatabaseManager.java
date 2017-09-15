@@ -38,6 +38,9 @@ public class DatabaseManager {
 	
 	public void Initialize()	{
 		try(SqlSession session = sqlSessionFactory.openSession()) {
+			//adding annotated mappers
+			session.getConfiguration().addMapper(DiscovererMapper.class);
+			
 			reader = Resources.getResourceAsReader("static/sql/schema.sql");
 			ScriptRunner runner = new ScriptRunner(session.getConnection());
 			runner.setLogWriter(null);
@@ -57,7 +60,6 @@ public class DatabaseManager {
 	public List<Discoverer> GetAllDiscoverers()	{
 		List <Discoverer> discoverers = null;
 		try	(SqlSession session = sqlSessionFactory.openSession())	{
-			//session.getConfiguration().addMapper(DiscovererMapper.class);
 			discovererMapper = session.getMapper(DiscovererMapper.class);
 			discoverers = discovererMapper.getAll();
 		}
