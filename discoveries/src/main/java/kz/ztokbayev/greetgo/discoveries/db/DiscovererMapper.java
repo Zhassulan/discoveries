@@ -19,6 +19,7 @@ public interface DiscovererMapper {
 			@Result(property="middlename", column="middlename")
 	})
 	List<Discoverer> getAllDiscoverers();
+	
 
 	Discoverer getDiscovererById(Integer id);
 	void updateDiscoverer(Discoverer dsc);
