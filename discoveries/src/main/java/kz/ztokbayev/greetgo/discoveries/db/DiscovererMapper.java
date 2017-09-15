@@ -15,22 +15,9 @@ public interface DiscovererMapper {
 	final String delById = "delete from discoverers where id = #{id}";
 	
 	@Select(getAll)
-	
-	@Results(value = {
-			@Result(property="id", column="id"),
-			@Result(property="firstname", column="firstname"),
-			@Result(property="lastname", column="lastname"),
-			@Result(property="middlename", column="middlename")
-	})
 	List<Discoverer> getAll();
 	
 	@Select(getById)
-	@Results(value = {
-			@Result(property="id", column="id"),
-			@Result(property="firstname", column="firstname"),
-			@Result(property="lastname", column="lastname"),
-			@Result(property="middlename", column="middlename")
-	})
 	Discoverer getById(Integer id);
 	
 	@Update(update)

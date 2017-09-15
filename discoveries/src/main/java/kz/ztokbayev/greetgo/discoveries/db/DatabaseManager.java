@@ -5,6 +5,7 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.mybatis.spring.SqlSessionFactoryBean;
 
 import kz.ztokbayev.greetgo.discoveries.App;
 import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
@@ -37,10 +38,9 @@ public class DatabaseManager {
 	}
 	
 	public void Initialize()	{
-		try(SqlSession session = sqlSessionFactory.openSession()) {
+		try	(SqlSession session = sqlSessionFactory.openSession()) 	{
 			//adding annotated mappers
 			session.getConfiguration().addMapper(DiscovererMapper.class);
-			
 			reader = Resources.getResourceAsReader("static/sql/schema.sql");
 			ScriptRunner runner = new ScriptRunner(session.getConnection());
 			runner.setLogWriter(null);
