@@ -1,5 +1,6 @@
 package kz.ztokbayev.greetgo.discoveries.model;
 
+//POJO - Business logic
 public class Discoverer {
 	
 	

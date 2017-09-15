@@ -22,6 +22,7 @@ public class RestWebController {
 	
 	@RequestMapping(value = "discoverers.html/getdiscoverers", method = RequestMethod.GET)
 	public Response getDiscoverers() {
+		//List<Discoverer> discoverers = dbmanager.GetAllDiscoverers();
 		List<Discoverer> discoverers = dbmanager.GetAllDiscoverers();
 		Response response = new Response("Done", discoverers);
 		return response;

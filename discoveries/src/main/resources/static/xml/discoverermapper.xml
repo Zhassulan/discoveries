@@ -12,12 +12,7 @@
     <insert id="delDiscovererById" parameterType="java.lang.Integer" flushCache="true" statementType="PREPARED" timeout="20">
         delete from discoverers where id = #{id}
     </insert>
-    
-	<!-- Получить всех открывателей -->	    
-    <select id="getDiscoverers" resultType="kz.ztokbayev.greetgo.discoveries.model.Discoverer">
-        select * from discoverers
-    </select>
-    
+      
     <!-- Получить открывателя по ID -->
     <select id="getDiscovererById" parameterType="java.lang.Integer" resultType="kz.ztokbayev.greetgo.discoveries.model.Discoverer">
         select * from discoverers where id = #{id}  

@@ -54,18 +54,19 @@ public class DatabaseManager {
 			}
 	}
 	
-	public List <Discoverer> GetAllDiscoverers()	{
+	public List<Discoverer> GetAllDiscoverers()	{
 		List <Discoverer> discoverers = null;
-		try(SqlSession session = sqlSessionFactory.openSession()) {
+		try	(SqlSession session = sqlSessionFactory.openSession())	{
+			//session.getConfiguration().addMapper(DiscovererMapper.class);
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-	        discoverers = discovererMapper.getDiscoverers();
+			discoverers = discovererMapper.getAllDiscoverers();
 		}
 		catch	(Exception ex)
 		{
 			App.logger.info("Error message: " + ex.getMessage());
 			App.logger.error("Stack trace: ", ex);
-		}
-       return discoverers;
+		}	
+		return discoverers;
 	}
 	
 	public void addDiscoverer(Discoverer discoverer)	{
