@@ -65,7 +65,7 @@ public class RestWebController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			Discoverer discoverer = objectMapper.readValue(jsonString, Discoverer.class);
-			dbmanager.updateDiscoverer(discoverer);
+			dbmanager.update(discoverer);
 		}
 		catch (Exception ex)
 		{

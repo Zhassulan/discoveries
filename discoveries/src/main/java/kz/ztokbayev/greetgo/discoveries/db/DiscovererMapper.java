@@ -9,6 +9,10 @@ import kz.ztokbayev.greetgo.discoveries.model.Discoverer;
 public interface DiscovererMapper {
 	
 	final String getAll = "select * from discoverers";
+	final String getById = "select * from discoverers where ID = #{id}";
+	final String update = "update discoverers set firstname = #{firstname}, lastname = #{lastname}, middlename = #{middlename} where id = #{id}";
+	final String add = "insert into discoverers (firstname, lastname, middlename) values (#{firstname}, #{lastname}, #{middlename})";
+	final String delById = "delete from discoverers where id = #{id}";
 	
 	@Select(getAll)
 	
@@ -18,12 +22,25 @@ public interface DiscovererMapper {
 			@Result(property="lastname", column="lastname"),
 			@Result(property="middlename", column="middlename")
 	})
-	List<Discoverer> getAllDiscoverers();
+	List<Discoverer> getAll();
 	
-
-	Discoverer getDiscovererById(Integer id);
-	void updateDiscoverer(Discoverer dsc);
-	void addDiscoverer(Discoverer dsc);
-	void delDiscovererById(Integer id);
+	@Select(getById)
+	@Results(value = {
+			@Result(property="id", column="id"),
+			@Result(property="firstname", column="firstname"),
+			@Result(property="lastname", column="lastname"),
+			@Result(property="middlename", column="middlename")
+	})
+	Discoverer getById(Integer id);
+	
+	@Update(update)
+	void update(Discoverer discoverer);
+	
+	@Insert(add)
+	@Options(useGeneratedKeys = true, keyProperty = "id")
+	void add(Discoverer discoverer);
+	
+	@Delete(delById)
+	void delById(Integer id);
 	
 }

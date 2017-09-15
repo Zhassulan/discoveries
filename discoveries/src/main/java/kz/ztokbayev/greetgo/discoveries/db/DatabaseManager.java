@@ -59,7 +59,7 @@ public class DatabaseManager {
 		try	(SqlSession session = sqlSessionFactory.openSession())	{
 			//session.getConfiguration().addMapper(DiscovererMapper.class);
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-			discoverers = discovererMapper.getAllDiscoverers();
+			discoverers = discovererMapper.getAll();
 		}
 		catch	(Exception ex)
 		{
@@ -72,7 +72,7 @@ public class DatabaseManager {
 	public void addDiscoverer(Discoverer discoverer)	{
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-			discovererMapper.addDiscoverer(discoverer);
+			discovererMapper.add(discoverer);
 			session.commit();
 		}
 		catch	(Exception ex)
@@ -85,7 +85,7 @@ public class DatabaseManager {
 	public void delDiscovererById(Integer id)	{
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-			discovererMapper.delDiscovererById(id);
+			discovererMapper.delById(id);
 			session.commit();
 		}
 		catch	(Exception ex)
@@ -99,7 +99,7 @@ public class DatabaseManager {
 		Discoverer discoverer = null;
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-			discoverer = discovererMapper.getDiscovererById(id); 
+			discoverer = discovererMapper.getById(id); 
 		}
 		catch	(Exception ex)
 		{
@@ -109,10 +109,10 @@ public class DatabaseManager {
 		return discoverer;
 	}
 	
-	public void updateDiscoverer(Discoverer discoverer)	{
+	public void update(Discoverer discoverer)	{
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			discovererMapper = session.getMapper(DiscovererMapper.class);
-			discovererMapper.updateDiscoverer(discoverer);
+			discovererMapper.update(discoverer);
 			session.commit();
 		}
 		catch	(Exception ex)

@@ -18,7 +18,6 @@
         </environment> 
     </environments> 
     <mappers>
-    	<mapper resource="static/xml/discoverermapper.xml"/>
     	<mapper resource="static/xml/starmapper.xml"/>
     </mappers> 
 </configuration>
